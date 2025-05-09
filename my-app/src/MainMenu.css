@@ -1,0 +1,352 @@
+:root {
+  /* Main colors */
+  --color-background: #0a0a0a;
+  --color-text: #ffffff;
+  
+  /* Game colors */
+  --color-correct: #00b894;      /* A softer green */
+  --color-present: #fdcb6e;      /* Warm yellow */
+  --color-absent: #2d3436;       /* Dark gray */
+  
+  /* UI elements */
+  --color-keyboard: #2d3436;     /* Dark gray for keyboard */
+  --color-keyboard-used: #636e72; /* Lighter gray for used keys */
+  
+  /* Button colors */
+  --color-primary: #00b894;      /* Same as correct */
+  --color-secondary: #74b9ff;    /* Soft blue */
+  --color-error: #ff7675;        /* Soft red */
+  
+  /* Keep existing variables */
+  --cell-size: 3.5rem;
+  --border-radius: 8px;
+  --animation-duration: 0.6s;
+}
+
+.main-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: var(--color-background);
+  padding: 0; /* Remove padding */
+}
+
+.menu-content {
+  background: var(--color-background); /* Match background */
+  padding: 2rem;
+  width: 100%; /* Full width */
+  max-width: 100%; /* Remove max-width restriction */
+  border-radius: 0; /* Remove rounded corners */
+  box-shadow: none; /* Remove shadow */
+  backdrop-filter: none; /* Remove blur effect */
+}
+
+.main-menu-title {
+  font-size: 4rem; /* Slightly smaller to accommodate more letters */
+  color: var(--color-text);
+  margin-bottom: 3rem;
+  text-align: center;
+  font-weight: bold;
+  letter-spacing: 0.2em;
+}
+
+.title-letter {
+  display: inline-block;
+  opacity: 0;
+  transform-origin: top;
+  margin: 0 2px;
+}
+
+.title-letter:nth-child(1) { 
+  animation: staggerFall1 0.5s ease-out forwards;
+  animation-delay: 0.1s; 
+}
+.title-letter:nth-child(2) { 
+  animation: staggerFall2 0.5s ease-out forwards;
+  animation-delay: 0.2s;
+}
+.title-letter:nth-child(3) { 
+  animation: staggerFall3 0.5s ease-out forwards;
+  animation-delay: 0.3s;
+}
+.title-letter:nth-child(4) { 
+  animation: staggerFall4 0.5s ease-out forwards;
+  animation-delay: 0.4s;
+}
+.title-letter:nth-child(5) { 
+  animation: staggerFall5 0.5s ease-out forwards;
+  animation-delay: 0.5s;
+}
+.title-letter:nth-child(6) { 
+  animation: staggerFall6 0.5s ease-out forwards;
+  animation-delay: 0.6s;
+}
+.title-letter:nth-child(7) { 
+  animation: staggerFall7 0.5s ease-out forwards;
+  animation-delay: 0.7s;
+}
+.title-letter:nth-child(8) { 
+  animation: staggerFall8 0.5s ease-out forwards;
+  animation-delay: 0.8s;
+}
+.title-letter:nth-child(9) { 
+  animation: staggerFall9 0.5s ease-out forwards;
+  animation-delay: 0.9s;
+}
+
+.main-menu-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem; /* Increased from 1rem */
+  margin-bottom: 3rem; /* Increased from 2rem */
+  max-width: 500px; /* Constrain buttons width */
+  margin: 0 auto; /* Center buttons */
+}
+
+.menu-button {
+  min-width: 200px;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+}
+
+.menu-button.primary {
+  background-color: var(--color-correct);
+  color: var(--color-background);
+}
+
+.menu-button.secondary {
+  background-color: var(--color-secondary);
+  color: var(--color-text);
+}
+
+.menu-button.config {
+  background-color: var(--color-keyboard-used);
+  color: var(--color-text);
+}
+
+.menu-button.active {
+  background-color: var(--color-present);
+  color: var(--color-background);
+}
+
+.menu-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.config-panel {
+  background: rgba(45, 52, 54, 0.5);
+  backdrop-filter: blur(10px);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  animation: slideDown 0.3s ease-out;
+}
+
+.config-title {
+  color: var(--color-text);
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.config-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  color: var(--color-text);
+}
+
+.config-item label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 300px;
+  margin: 0.5rem 0;
+}
+
+.input-wrapper input[type="range"] {
+  width: 100%;
+  height: 1px; /* Reduced from 4px */
+  background: var(--color-keyboard);
+  border-radius: 50px;
+  outline: none;
+}
+
+.input-wrapper input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  background-color: var(--color-correct);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.input-wrapper input[type="range"]::-webkit-slider-thumb:hover {
+  transform: scale(1.1);
+}
+
+.input-limits {
+  display: block;
+  text-align: right;
+  font-size: 0.8rem;
+  color: var(--color-text);
+  opacity: 0.7;
+}
+
+.config-item input {
+  width: 70px;
+  padding: 0.5rem;
+  background-color: var(--color-keyboard);
+  border: 2px solid transparent;
+  border-radius: var(--border-radius);
+  color: var(--color-text);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.config-item input:focus {
+  outline: none;
+  border-color: var(--color-correct);
+}
+
+@keyframes popIn {
+  0% { opacity: 0; transform: scale(0.5); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes staggerFall1 {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) rotateZ(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateZ(-8deg);
+  }
+}
+
+@keyframes staggerFall2 {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) rotateZ(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateZ(5deg);
+  }
+}
+
+@keyframes staggerFall3 {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) rotateZ(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateZ(-6deg);
+  }
+}
+
+@keyframes staggerFall4 {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) rotateZ(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateZ(7deg);
+  }
+}
+
+@keyframes staggerFall5 {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) rotateZ(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateZ(-4deg);
+  }
+}
+
+@keyframes staggerFall6 {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) rotateZ(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateZ(6deg);
+  }
+}
+
+@keyframes staggerFall7 {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) rotateZ(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateZ(-5deg);
+  }
+}
+
+@keyframes staggerFall8 {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) rotateZ(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateZ(4deg);
+  }
+}
+
+@keyframes staggerFall9 {
+  0% {
+    opacity: 0;
+    transform: translateY(-50px) rotateZ(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) rotateZ(-3deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .menu-content {
+    padding: 2rem;
+  }
+
+  .main-menu-title {
+    font-size: 3rem;
+    margin-bottom: 2rem;
+  }
+
+  .menu-button {
+    min-width: 180px;
+    font-size: 1rem;
+  }
+}
